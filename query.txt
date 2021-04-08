@@ -1,0 +1,52 @@
+>>> dojos.objects.create(name = "Brock", city = "Afluenza", state = "RD")
+<dojos: dojos object (1)>
+>>> dojos.objects.create(name = "Chag", city = "Flamingo", state = "OH")
+<dojos: dojos object (2)>
+>>> dojos.objects.create(name = "Tig", city = "Bragh", state = "TN")
+<dojos: dojos object (3)>
+
+>>> dojos.objects.all().delete()
+(3, {'dojo_ninjas_app.ninjas': 0, 'dojo_ninjas_app.dojos': 3})
+
+>>> dojos.objects.create(name = "Zothendi", city = "Quet", state = "AL")
+<dojos: dojos object (4)>
+>>> dojos.objects.create(name = "Utempa", city = "Nord", state = "OR")
+<dojos: dojos object (5)>
+>>> dojos.objects.create(name = "Palendrimpth", city = "Febrrit", state = "NM")
+<dojos: dojos object (6)>
+
+>>> ninjas.objects.create(first_name = "A", last_name = "AL", dojo = dojos.objects.get(id=4))
+<ninjas: ninjas object (1)>
+>>> ninjas.objects.create(first_name = "B", last_name = "BL", dojo = dojos.objects.get(id=4))
+<ninjas: ninjas object (2)>
+>>> ninjas.objects.create(first_name = "C", last_name = "CL", dojo = dojos.objects.get(id=4))
+<ninjas: ninjas object (3)>
+
+>>> ninjas.objects.create(first_name = "D", last_name = "DL", dojo = dojos.objects.get(id=5))
+<ninjas: ninjas object (4)>
+>>> ninjas.objects.create(first_name = "E", last_name = "EL", dojo = dojos.objects.get(id=5))
+<ninjas: ninjas object (5)>
+>>> ninjas.objects.create(first_name = "F", last_name = "FL", dojo = dojos.objects.get(id=5))
+<ninjas: ninjas object (6)>
+
+>>> ninjas.objects.create(first_name = "G", last_name = "GL", dojo = dojos.objects.get(id=6))
+<ninjas: ninjas object (7)>
+>>> ninjas.objects.create(first_name = "H", last_name = "HL", dojo = dojos.objects.get(id=6))
+<ninjas: ninjas object (8)>
+>>> ninjas.objects.create(first_name = "I", last_name = "IL", dojo = dojos.objects.get(id=6))
+<ninjas: ninjas object (9)> 
+
+>>> n = dojos.objects.get(id=4)
+>>> n.ninjas.all()
+<QuerySet [<ninjas: ninjas object (1)>, <ninjas: ninjas object (2)>, <ninjas: ninjas object (3)>]>
+
+>>> n = dojos.objects.last()
+>>> n.ninjas.all()
+<QuerySet [<ninjas: ninjas object (7)>, <ninjas: ninjas object (8)>, <ninjas: ninjas object (9)>]>
+
+>>> n = ninjas.objects.last()
+>>> n.dojo
+<dojos: dojos object (6)>
+
+>>> dojos.objects.create(name = "Quagithy", city = "Wheelbarrowd", state = "TX", desc = "dad gum! Yee haw!")
+<dojos: dojos object (7)>
